@@ -31,7 +31,7 @@ def registrar_usuario():
         print("El nombre de usuario no es válido o ya existe.")
         nombreUsuario = input("Nombre de Usuario: ")
 
-    clave = input(""Ingresar una clave de 6 a 12 digitos con al menos una letra minuscula, una letra mayuscula y un caracter especial. Clave: ")
+    clave = input("Ingresar una clave de 6 a 12 digitos con al menos una letra minuscula, una letra mayuscula y un caracter especial. Clave: ")
     while not validar_clave(clave):
         print("La clave no cumple con los requisitos.")
         clave = input("Clave: ")
