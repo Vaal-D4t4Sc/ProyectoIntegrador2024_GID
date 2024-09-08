@@ -18,11 +18,11 @@ ________________________________________________________________________________
         Github: 
 
 
-         Nombre: 
-        Apellido: 
-        DNI: 
-        Email: 
-        Github: 
+        Nombre: Valentina
+        Apellido: Pich
+        DNI:  35524680
+        Email: valentina.m.pich@gmail.com
+        Github: https://github.com/Vaal-D4t4Sc
 
 
         Nombre: Eglimar
