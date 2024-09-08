@@ -56,7 +56,7 @@ Turnero para banco.pdf: Archivo que contiene una breve descripción del proyecto
 
 Puedes consultar la documentación completa haciendo clic en el siguiente enlace:
 
-- [Documentación del Proyecto](./Evidencia%1/Turnero%Para%Banco.pdf)
+- [Documentación del Proyecto](./Evidencia%1/Turnero_Para_Banco.pdf)
 
 
 
