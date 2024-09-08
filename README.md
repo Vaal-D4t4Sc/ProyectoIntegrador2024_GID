@@ -4,11 +4,11 @@ ________________________________________________________________________________
  # Integrantes
  ____________________________________________________________________________________________________________________
 
-        Nombre: 
-        Apellido: 
-        DNI: 
-        Email: 
-        Github: 
+        Nombre: Lucas Dylan
+        Apellido: Ledesma 
+        DNI: 44828160
+        Email: lucas.dylan.ledesma@gmail.com
+        Github: https://github.com/Lukit4s
 
 
         Nombre: Francisco
