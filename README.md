@@ -11,11 +11,11 @@ ________________________________________________________________________________
         Github: 
 
 
-        Nombre: 
-        Apellido: 
-        DNI: 
-        Email: 
-        Github: 
+        Nombre: Francisco
+        Apellido: Oviedo
+        DNI: 39326636
+        Email: Foviedor96@gmail.com
+        Github: https://github.com/Franor9
 
 
         Nombre: Valentina
