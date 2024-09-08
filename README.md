@@ -34,16 +34,24 @@ ________________________________________________________________________________
 
 # Contenido del Repositorio
 ____________________________________________________________________________________________________________________
+## Carpeta evidencia1
 
-## Carpeta app
+Turnero para banco.pdf: Archivo que contiene una breve descripción del proyecto, objetivos, funcionalidades y alcance.
+  
+  ### Carpeta app
 
-main.py: Es el archivo que contiene el código del menú principal del programa, desde el cual se accede mediante input del usuario a las diferentes funciones (CRUD) del sistema.
+     main.py: Es el archivo que contiene el código del menú principal del programa, desde el cual se accede mediante 
+     input del usuario a las diferentes funciones (CRUD) del sistema.
+     
+     aritmetica.py: Archivo que contiene las funciones básicas de operaciones aritméticas.
+     
+     test_aritmetica: Archivo de prueba para las funciones aritméticas.
 
-aritmetica.py: Archivo que contiene las funciones básicas de operaciones aritméticas.
+     carpeta app: Contiene archivos txt, para almacenr usuarios e intentos fallidos con la clave.
 
-test_aritmetica: Archivo de prueba para las funciones aritméticas.
+ ### Carpeta BBDD
 
-## Carpeta 
+     Detalle BBDD.pdf: Archivo con la información de las tablas de la base de datos del sistema y sus relaciones.
 
 
 
