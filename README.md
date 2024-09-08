@@ -54,6 +54,9 @@ Turnero para banco.pdf: Archivo que contiene una breve descripción del proyecto
      Detalle BBDD.pdf: Archivo con la información de las tablas de la base de datos del sistema y sus relaciones.
 
 
+Puedes consultar la documentación completa haciendo clic en el siguiente enlace:
+
+- [Documentación del Proyecto](./TurneroParaBanco.pdf)
 
 
 
