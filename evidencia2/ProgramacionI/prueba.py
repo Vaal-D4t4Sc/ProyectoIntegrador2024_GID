@@ -23,7 +23,7 @@ class U_Manager:
         self.usuarios = []
         self.next_id = 1
 
-    def agre_u(self, username, password, email):
+    def agreg_u(self, username, password, email):
         nuevo_usuario = Usuario(self.next_id, username, password, email)
         self.usuarios.append(nuevo_usuario)
         self.next_id += 1
@@ -82,25 +82,25 @@ def main_menu():
             username = input("Ingrese el username: ")
             password = input("Ingrese la contraseña: ")
             email = input("Ingrese el email: ")
-            manager.agregar_usuario(username, password, email)
+            manager.agreg_u(username, password, email)
         elif choice == '2':
             username = input("Ingrese el username del usuario a modificar: ")
             new_username = input("Ingrese el nuevo username (deje vacío si no desea cambiarlo): ")
             new_password = input("Ingrese la nueva contraseña (deje vacío si no desea cambiarlo): ")
             new_email = input("Ingrese el nuevo email (deje vacío si no desea cambiarlo): ")
-            manager.modificar_usuario(username, new_username or None, new_password or None, new_email or None)
+            manager.modif_u(username, new_username or None, new_password or None, new_email or None)
         elif choice == '3':
             identifier = input("Ingrese el username o email del usuario a eliminar: ")
-            manager.eliminar_usuario(identifier)
+            manager.elim_u(identifier)
         elif choice == '4':
             identifier = input("Ingrese el username o email del usuario a buscar: ")
-            usuario = manager.buscar_usuario(identifier)
+            usuario = manager.buscar_u(identifier)
             if usuario:
                 print(usuario)
             else:
                 print(f'Usuario {identifier} no encontrado.')
         elif choice == '5':
-            manager.mostrar_usuarios()
+            manager.mostrar_u()
         elif choice == '6':
             print("Saliendo de la aplicación.")
             break
