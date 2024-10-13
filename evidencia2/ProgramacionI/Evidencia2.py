@@ -1,3 +1,7 @@
+import pickle
+from datetime import datetime
+
+
 class Usuario:
     def __init__(self, id, username, password, email):
         self.id = id
@@ -6,7 +10,7 @@ class Usuario:
         self.email = email
 
     def __str__(self):
-        return f'ID: {self.id}, Username: {self.username}, Contraseña ****, Email: {self.email}'
+        return f'ID: {self.id}, Username: {self.username}, Contraseña {self.password}, Email: {self.email}'
 
 
 class Acceso:
@@ -15,46 +19,56 @@ class Acceso:
         self.fechaIngreso = fechaIngreso
         self.fechaSalida = fechaSalida
         self.usuarioLogueado = usuarioLogueado
+
+    def __str__(self):
         return f'ID {self.id}, Usuario logueado: {self.usuarioLogueado}, Fecha de ingreso: {self.fechaIngreso}, Fecha de salida: {self.fechaSalida}'
 
 
 class U_Manager:
     def __init__(self):
-        self.usuarios = []
-        self.next_id = 1
+        self.usuarios = self.cargar_usuarios()
+        self.next_id = len(self.usuarios) + 1 if self.usuarios else 1
 
-    def agreg_u(self, username, password, email):
+    def cargar_usuarios(self):
+        try:
+            with open('usuarios.ispc', 'rb') as f:
+                return pickle.load(f)
+        except (FileNotFoundError, EOFError):
+            return []
+
+    def guardar_usuarios(self):
+        with open('usuarios.ispc', 'wb') as f:
+            pickle.dump(self.usuarios, f)
+
+    def agre_u(self, username, password, email):
         nuevo_usuario = Usuario(self.next_id, username, password, email)
         self.usuarios.append(nuevo_usuario)
         self.next_id += 1
+        self.guardar_usuarios()
         print(f'Usuario {username} agregado exitosamente.')
-
-    def modif_u(self, username, new_username=None, new_password=None, new_email=None):
-        usuario = self.buscar_u(username)
-        if usuario:
-            if new_username:
-                usuario.username = new_username
-            if new_password:
-                usuario.password = new_password
-            if new_email:
-                usuario.email = new_email
-            print(f'Usuario {username} modificado exitosamente.')
-        else:
-            print(f'Usuario {username} no encontrado.')
-
-    def elim_u(self, identifier):
-        usuario = self.buscar_u(identifier)
-        if usuario:
-            self.usuarios.remove(usuario)
-            print(f'Usuario {identifier} eliminado exitosamente.')
-        else:
-            print(f'Usuario {identifier} no encontrado.')
 
     def buscar_u(self, identifier):
         for usuario in self.usuarios:
             if usuario.username == identifier or usuario.email == identifier:
                 return usuario
         return None
+
+    def verificar_acceso(self, username, password):
+        usuario = self.buscar_u(username)
+        if usuario and usuario.password == password:
+            return usuario
+        return None
+
+    def registrar_acceso(self, usuario):
+        fecha_hora = datetime.now().strftime("%d/%m/%y  %H:%M")
+        acceso = Acceso(len(usuario.username), datetime.now(), None, usuario.username)
+        with open('accesos.ispc', 'ab') as f:
+            pickle.dump(acceso, f)
+
+    def registrar_intento_fallido(self, username, password):
+        fecha_hora = datetime.now().strftime("%d/%m/%y  %H:%M")
+        with open('logs.txt', 'a') as f:
+            f.write(f'{datetime.now()}: Intento fallido con usuario: {username}, Contraseña: {password}\n')
 
     def mostrar_u(self):
         if not self.usuarios:
@@ -74,7 +88,8 @@ def main_menu():
         print("3. Eliminar Usuario")
         print("4. Buscar Usuario")
         print("5. Mostrar Todos los Usuarios")
-        print("6. Salir")
+        print("6. Ingresar al Sistema")
+        print("7. Salir")
 
         choice = input("Seleccione una opción: ")
 
@@ -82,7 +97,7 @@ def main_menu():
             username = input("Ingrese el username: ")
             password = input("Ingrese la contraseña: ")
             email = input("Ingrese el email: ")
-            manager.agreg_u(username, password, email)
+            manager.agre_u(username, password, email)
         elif choice == '2':
             username = input("Ingrese el username del usuario a modificar: ")
             new_username = input("Ingrese el nuevo username (deje vacío si no desea cambiarlo): ")
@@ -102,6 +117,31 @@ def main_menu():
         elif choice == '5':
             manager.mostrar_u()
         elif choice == '6':
+            username = input("Ingrese el username: ")
+            password = input("Ingrese la contraseña: ")
+            usuario = manager.verificar_acceso(username, password)
+
+            if usuario:
+                print("Acceso correcto")
+                manager.registrar_acceso(usuario)
+
+                while True:
+                    print("\nOpciones:")
+                    print("1. Volver al Menú Principal")
+                    print("2. Salir de la Aplicación")
+                    option = input("Seleccione una opción: ")
+
+                    if option == '1':
+                        break
+                    elif option == '2':
+                        print("Saliendo de la aplicación.")
+                        return
+                    else:
+                        print("Opción no válida.")
+            else:
+                print("Acceso incorrecto")
+                manager.registrar_intento_fallido(username, password)
+        elif choice == '7':
             print("Saliendo de la aplicación.")
             break
         else:
@@ -110,4 +150,3 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
-
