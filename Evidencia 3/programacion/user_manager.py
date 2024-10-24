@@ -19,7 +19,7 @@ class U_Manager:
             return []
 
     def guardar_usuarios(self):
-        self.usuarios.sort(key=lambda u: u.username)  # Ordenar usuarios
+        self.usuarios.sort(key=lambda u: u.username)  
         with open('usuarios.ispc', 'wb') as f:
             pickle.dump(self.usuarios, f)
 
@@ -31,7 +31,7 @@ class U_Manager:
         print(f'Usuario {username} agregado exitosamente.')
 
     def buscar_u(self, identifier):
-        self.usuarios.sort(key=lambda u: u.username)  # Asegurarse de que está ordenado para búsqueda binaria
+        self.usuarios.sort(key=lambda u: u.username)  
         low, high = 0, len(self.usuarios) - 1
         while low <= high:
             mid = (low + high) // 2
@@ -98,16 +98,13 @@ class U_Manager:
                 print(usuario)
 
     def crear_registros_pluviales(self, year):
-        # Verificar si el archivo ya existe
-        filename = f'registroPluvial{year}.csv'
+           filename = f'registroPluvial{year}.csv'
         try:
             df = pd.read_csv(filename)
             print(f"Registros pluviales cargados desde {filename}")
             return df
         except FileNotFoundError:
-            # Generar registros aleatorios
             data = {month: [random.randint(0, 100) for _ in range(31)] for month in range(1, 13)}
-            # Convertir a DataFrame
             df = pd.DataFrame.from_dict(data, orient='index').transpose().fillna(0)
             df.columns = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
             df.to_csv(filename, index=False)
@@ -121,15 +118,13 @@ class U_Manager:
         else:
             print("Mes no válido.")
 
-    def graficar_registros(self, df):
-        # Gráfico de barras
+    def graficar_registros(self, df): 
         df.sum().plot(kind='bar')
         plt.title('Lluvias Anuales')
         plt.xlabel('Meses')
         plt.ylabel('Milímetros de lluvia')
         plt.show()
-
-        # Gráfico de dispersión
+        
         for i in range(len(df)):
             plt.scatter(df.columns, df.iloc[i], label=f'Día {i+1}')
         plt.title('Lluvias Diarias')
@@ -137,7 +132,6 @@ class U_Manager:
         plt.ylabel('Milímetros de lluvia')
         plt.show()
 
-        # Gráfico circular
         df.sum().plot(kind='pie', autopct='%1.1f%%')
         plt.title('Distribución de Lluvias por Mes')
         plt.show()                
