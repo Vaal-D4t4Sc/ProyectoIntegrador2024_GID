@@ -23,12 +23,15 @@ def main_menu():
             manager.agre_u(username, password, email)
         elif choice == '2':
             username = input("Ingrese el username del usuario a modificar: ")
-            # Aquí puedes implementar la lógica para modificar un usuario
-            pass
+            new_username = input("Ingrese el nuevo username (deje vacío si no desea cambiarlo): ")
+            new_password = input("Ingrese la nueva contraseña (deje vacío si no desea cambiarlo): ")
+            new_email = input("Ingrese el nuevo email (deje vacío si no desea cambiarlo): ")
+            manager.modif_u(username, new_username or None, new_password or None, new_email or None)
+                        pass
         elif choice == '3':
             identifier = input("Ingrese el username o email del usuario a eliminar: ")
-            # Aquí puedes implementar la lógica para eliminar un usuario
-            pass
+            manager.elim_u(identifier)
+                       pass
         elif choice == '4':
             identifier = input("Ingrese el username o email del usuario a buscar: ")
             usuario = manager.buscar_u(identifier)
