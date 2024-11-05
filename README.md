@@ -56,7 +56,7 @@ Turnero para banco.pdf: Archivo que contiene una breve descripción del proyecto
 
 Puedes consultar la documentación completa haciendo clic en el siguiente enlace:
 
-- [Documentación del Proyecto]([./Evidencia%1/Turnero_Para_Banco.pdf](https://github.com/Vaal-D4t4Sc/ProyectoIntegrador2024_GID/blob/main/Evidencia%201/Turnero_Para%20_Banco.pdf))
+- [Documentación del Proyecto]([[./Evidencia%1/Turnero_Para_Banco.pdf](https://github.com/Vaal-D4t4Sc/ProyectoIntegrador2024_GID/blob/main/Evidencia%201/Turnero_Para%20_Banco.pdf)](https://1drv.ms/w/c/df7c24c520f7e4ff/ETyySCLY2UxIl_b-KSyL13kB56xCg2k7SZ2tyCdrXlqgnw?e=FYTDmy))
 
 
 
